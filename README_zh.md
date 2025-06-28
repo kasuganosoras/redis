@@ -179,23 +179,7 @@ end)
 
 所有命令都支持同步风格调用 (`Redis.get`) 和 `pipeline` 调用 (`pipeline:get`)。
 
-#### 通用命令 (Generic)
-- `del`, `exists`, `expire`, `expireat`, `keys`, `ttl`
-
-#### 字符串 (String)
-- `get`, `set`, `setex`, `setnx`, `mget`, `mset`, `incr`, `decr`, `incrby`, `decrby`
-
-#### 哈希 (Hash)
-- `hget`, `hset`, `hgetall`, `hdel`, `hkeys`, `hvals`, `hlen`, `hexists`, `hincrby`
-
-#### 列表 (List)
-- `lpush`, `rpush`, `lpop`, `rpop`, `lrange`, `llen`, `lindex`, `lrem`
-
-#### 集合 (Set)
-- `sadd`, `srem`, `smembers`, `sismember`, `scard`, `spop`
-
-#### 有序集合 (Sorted Set)
-- `zadd`, `zrange`, `zrevrange`, `zrem`, `zcard`, `zscore`, `zcount`
+完整命令列表可以参考：https://redis.io/docs/latest/commands
 
 ## 许可
 

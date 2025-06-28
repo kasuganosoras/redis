@@ -182,29 +182,7 @@ end)
 
 All commands support both synchronous-style calls (`Redis.get`) and pipeline calls (`pipeline:get`).
 
-#### Generic
-
-  - `del`, `exists`, `expire`, `expireat`, `keys`, `ttl`
-
-#### String
-
-  - `get`, `set`, `setex`, `setnx`, `mget`, `mset`, `incr`, `decr`, `incrby`, `decrby`
-
-#### Hash
-
-  - `hget`, `hset`, `hgetall`, `hdel`, `hkeys`, `hvals`, `hlen`, `hexists`, `hincrby`
-
-#### List
-
-  - `lpush`, `rpush`, `lpop`, `rpop`, `lrange`, `llen`, `lindex`, `lrem`
-
-#### Set
-
-  - `sadd`, `srem`, `smembers`, `sismember`, `scard`, `spop`
-
-#### Sorted Set
-
-  - `zadd`, `zrange`, `zrevrange`, `zrem`, `zcard`, `zscore`, `zcount`
+Full commands list: https://redis.io/docs/latest/commands
 
 ## License
 
