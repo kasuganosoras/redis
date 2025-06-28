@@ -1,5 +1,11 @@
 # FiveM Redis
 
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![FiveM](https://img.shields.io/badge/framework-FiveM-orange.svg)
+![Language](https://img.shields.io/badge/language-Lua%20%2B%20JS-yellow.svg)
+
+[中文介绍 (Chinese)](README_zh.md)
+
 A high-performance, API-friendly Redis library designed for FiveM servers. It adopts a design philosophy similar to `oxmysql`, providing a simple, stable, and seemingly synchronous Redis operation interface for your Lua scripts through file inclusion.
 
 This library supports both per-command execution and a high-performance **Pipeline** mode to meet the performance needs of different scenarios.
