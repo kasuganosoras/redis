@@ -16,7 +16,7 @@ This library supports both per-command execution and a high-performance **Pipeli
 
 ## Features
 
-  - **`oxmysql`-style API**: No need to deal with complex export functions. Like `oxmysql`, you get a global `Redis` object in your script simply by including the library file.
+  - **oxmysql-style API**: No need to deal with complex export functions. Like `oxmysql`, you get a global `Redis` object in your script simply by including the library file.
   - **Synchronous-like Experience**: You can execute Redis operations as if you were writing synchronous code (`local value = Redis.get('key')`) without blocking the server's main thread.
   - **High-Performance Pipeline Mode**: Supports batching a large number of commands to be sent at once, significantly reducing network latency and boosting the performance of bulk operations by tens of times.
   - **Comprehensive Command Support**: Supports most commonly used Redis commands, covering Strings, Hashes, Lists, Sets, etc.
@@ -138,6 +138,37 @@ Redis.ready(function()
         print('Time taken: ' .. (endTime - start) .. 'ms') -- Usually under 100ms
         print('Number of replies received: ' .. #replies)
     end, false)
+end)
+```
+
+## Asynchronous Calls
+By default, functions like get, set, etc. provided by the Redis object are executed synchronously. You can also use Async to make asynchronous calls.
+
+#### Usage Example
+```lua
+-- Asynchronous GET operation
+Redis.Async.get('key', function(value, err)
+    if err then
+        print('^1Asynchronous GET operation failed:^7', err)
+    else
+        print('^2Asynchronous GET operation succeeded:^7', value)
+    end
+end)
+```
+
+## Getting Redis Instance via exports
+If your script needs to share the `Redis` object across multiple files, you can obtain it using `exports`.
+
+```lua
+-- Get the Redis instance
+local Redis = exports.redis:GetInstance()
+
+-- Ensure the Redis connection is ready before using it
+Redis.ready(function()
+    print('^^2[MyScript] Redis is ready!^^7')
+    -- Get / Set a value using synchronized style
+    Redis.set('server:name', 'My Awesome FiveM Server')
+    print('Server name from Redis: ', Redis.get('server:name'))
 end)
 ```
 

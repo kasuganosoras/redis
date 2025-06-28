@@ -20,7 +20,7 @@
 
 ## 特性
 
-- **`oxmysql` 风格的 API**: 无需处理复杂的导出函数，像使用 `oxmysql` 一样，通过包含库文件即可在脚本中获得全局的 `Redis` 对象。
+- **oxmysql 风格的 API**: 无需处理复杂的导出函数，像使用 `oxmysql` 一样，通过包含库文件即可在脚本中获得全局的 `Redis` 对象。
 - **同步调用体验**: 您可以像编写同步代码一样执行 Redis 操作 (`local value = Redis.get('key')`)，而不会阻塞服务器主线程。
 - **高性能 Pipeline 模式**: 支持将大量命令打包一次性发送，极大减少网络延迟，使批量操作性能提升数十倍。
 - **全面的命令支持**: 支持绝大部分常用的 Redis 命令，涵盖字符串、哈希、列表、集合等。
@@ -141,6 +141,37 @@ Redis.ready(function()
         print('耗时：' .. (endTime - start) .. 'ms') -- 耗时通常在 100ms 以内
         print('收到的响应数量: ' .. #replies)
     end, false)
+end)
+```
+
+## 异步调用
+默认 Redis 对象提供的 get、set 等函数都是以同步方式执行的，您也可以使用 Async 来执行异步调用。
+
+#### 用法示例
+```lua
+-- 异步获取一个值
+Redis.Async.get('key', function(value, err)
+    if err then
+        print('异步获取失败: ', err)
+    else
+        print('异步获取到的值: ', value)
+    end
+end)
+```
+
+## 通过 exports 获取 Redis 对象
+如果您的脚本需要在多个文件中共享 `Redis` 对象，您可以使用 `exports` 来获取。
+
+```lua
+-- 引入 Redis 实例
+local Redis = exports.redis:GetInstance()
+
+-- 确保 Redis 连接已就绪
+Redis.ready(function()
+    print('^^2[MyScript] Redis is ready!^^7')
+    -- 同步获取/设置一个值
+    Redis.set('server:name', 'My Awesome FiveM Server')
+    print('Server name from Redis: ', Redis.get('server:name'))
 end)
 ```
 
