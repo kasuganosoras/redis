@@ -12,13 +12,16 @@ This library supports both per-command execution and a high-performance **Pipeli
 
 ## Table of Contents
 
-  - [Features](https://www.google.com/search?q=%23features)
-  - [Installation](https://www.google.com/search?q=%23installation)
-  - [Usage](https://www.google.com/search?q=%23usage)
-      - [Per-Command (Standard Usage)](https://www.google.com/search?q=%23per-command-standard-usage)
-      - [Pipeline Mode (High-Performance Bulk Operations)](https://www.google.com/search?q=%23pipeline-mode-high-performance-bulk-operations)
-  - [Supported Commands](https://www.google.com/search?q=%23supported-commands)
-  - [License](https://www.google.com/search?q=%23license)
+  - [Features](#features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+      - [Per-Command (Standard Usage)](#per-command-standard-usage)
+      - [Pipeline Mode (High-Performance Bulk Operations)](#pipeline-mode-high-performance-bulk-operations)
+      - [Pub/Sub Mode](#pubsub-mode)
+  - [Asynchronous Calls](#asynchronous-calls)
+  - [Getting Redis Instance via exports](#getting-redis-instance-via-exports)
+  - [Supported Commands](#supported-commands)
+  - [License](#license)
 
 ## Features
 
