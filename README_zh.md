@@ -4,7 +4,7 @@
 ![FiveM](https://img.shields.io/badge/framework-FiveM-orange.svg)
 ![Language](https://img.shields.io/badge/language-Lua%20%2B%20JS-yellow.svg)
 
-一个为 FiveM 服务器设计的、高性能、API 友好的 Redis 支持库。它采用与 `oxmysql` 类似的设计哲学，通过文件包含的方式，为您的 Lua 脚本提供一个简单、稳定、看似同步的 Redis 操作接口。
+一个为 FiveM 服务器设计的、高性能、API 友好的 Redis 支持库。它采用与 `oxmysql` 类似的设计，通过文件包含的方式，为您的 Lua 脚本提供一个简单、稳定、看似同步的 Redis 操作接口。
 
 这个库同时支持逐条命令执行和高性能的 **Pipeline（管道）** 模式，以满足不同场景下的性能需求。
 
@@ -76,7 +76,7 @@ server_scripts {
 
 -- 使用 Redis.ready 是最佳实践，确保所有操作都在连接成功后执行
 Redis.ready(function()
-    print('^^2[MyScript] Redis is ready!^^7')
+    print('^2[MyScript] Redis is ready!^7')
 
     -- 同步获取/设置一个值
     local serverName = Redis.get('server:name')
@@ -130,7 +130,7 @@ Redis.ready(function()
 
     -- 性能测试示例
     RegisterCommand('redisbenchmark_pipeline', function()
-        print('^^2Starting pipeline benchmark...^^7')
+        print('^2Starting pipeline benchmark...^7')
         local start = GetGameTimer()
 
         local p = Redis.pipeline()
@@ -140,7 +140,7 @@ Redis.ready(function()
         local replies = p:exec()
 
         local endTime = GetGameTimer()
-        print('^^2Pipeline benchmark for 10,000 GETs finished!^^7')
+        print('^2Pipeline benchmark for 10,000 GETs finished!^7')
         print('耗时：' .. (endTime - start) .. 'ms') -- 耗时通常在 100ms 以内
         print('收到的响应数量: ' .. #replies)
     end, false)
@@ -177,7 +177,7 @@ local Redis = exports.redis:GetInstance()
 
 -- 确保 Redis 连接已就绪
 Redis.ready(function()
-    print('^^2[MyScript] Redis is ready!^^7')
+    print('^2[MyScript] Redis is ready!^7')
     -- 同步获取/设置一个值
     Redis.set('server:name', 'My Awesome FiveM Server')
     print('Server name from Redis: ', Redis.get('server:name'))

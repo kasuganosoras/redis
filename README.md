@@ -79,7 +79,7 @@ server_scripts {
 
 -- Using Redis.ready is best practice to ensure all operations run after the connection is successful
 Redis.ready(function()
-    print('^^2[MyScript] Redis is ready!^^7')
+    print('^2[MyScript] Redis is ready!^7')
 
     -- Synchronously get/set a value
     local serverName = Redis.get('server:name')
@@ -133,7 +133,7 @@ Redis.ready(function()
 
     -- Performance test example
     RegisterCommand('redisbenchmark_pipeline', function()
-        print('^^2Starting pipeline benchmark...^^7')
+        print('^2Starting pipeline benchmark...^7')
         local start = GetGameTimer()
 
         local p = Redis.pipeline()
@@ -143,7 +143,7 @@ Redis.ready(function()
         local replies = p:exec()
 
         local endTime = GetGameTimer()
-        print('^^2Pipeline benchmark for 10,000 GETs finished!^^7')
+        print('^2Pipeline benchmark for 10,000 GETs finished!^7')
         print('Time taken: ' .. (endTime - start) .. 'ms') -- Usually under 100ms
         print('Number of replies received: ' .. #replies)
     end, false)
@@ -180,7 +180,7 @@ local Redis = exports.redis:GetInstance()
 
 -- Ensure the Redis connection is ready before using it
 Redis.ready(function()
-    print('^^2[MyScript] Redis is ready!^^7')
+    print('^2[MyScript] Redis is ready!^7')
     -- Get / Set a value using synchronized style
     Redis.set('server:name', 'My Awesome FiveM Server')
     print('Server name from Redis: ', Redis.get('server:name'))
