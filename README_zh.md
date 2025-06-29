@@ -144,6 +144,12 @@ Redis.ready(function()
 end)
 ```
 
+### Pub/Sub 模式
+
+Pub/Sub 模式允许您订阅一个或多个频道，并在频道有新消息发布时接收通知。这在构建实时聊天、游戏事件通知等场景时非常有用。
+
+使用参考：[Pub/Sub 介绍](README_PUBSUB.md)
+
 ## 异步调用
 默认 Redis 对象提供的 get、set 等函数都是以同步方式执行的，您也可以使用 Async 来执行异步调用。
 
@@ -188,7 +194,7 @@ end)
 ```text
 MIT License
 
-Copyright (c) 2025 [Your Name or Project Name]
+Copyright (c) 2025 Akkariin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

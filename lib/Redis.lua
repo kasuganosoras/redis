@@ -103,9 +103,10 @@ local redisMt = {
 -- 应用元表到Redis对象
 setmetatable(Redis, redisMt)
 
-Redis.ready = function(cb)
-    if type(cb) ~= 'function' then
-        return error('^1[Redis]^0 Redis.ready(cb) expects a function.')
+-- Redis 就绪订阅
+function Redis.ready(cb)
+    if type(cb) ~= 'function' and (type(cb) ~= 'table' or not cb.__cfx_functionReference) then
+        return error(('^1[Redis]^0 Redis.ready(cb) expects a function, given %s'):format(type(cb)))
     end
     if isReady then
         Citizen.CreateThread(cb)
@@ -114,6 +115,7 @@ Redis.ready = function(cb)
     end
 end
 
+-- 管道发送
 function Redis.pipeline()
     local pipeline = {
         _commands = {} -- 用于存储命令队列
@@ -155,6 +157,31 @@ function Redis.pipeline()
 
     -- 应用元表 - 只应用一次元表
     return setmetatable(pipeline, pipelineMt)
+end
+
+-- 订阅
+function Redis.subscribe(channel, callback)
+    exports.redis:subscribe(channel, callback)
+end
+
+-- 批量订阅
+function Redis.subscribeMulti(channels, callback)
+    exports.redis:subscribeMulti(channels, callback)
+end
+
+-- 取消订阅
+function Redis.unsubscribe(channel)
+    exports.redis:unsubscribe(channel)
+end
+
+-- 发布
+function Redis.publish(channel, message)
+    exports.redis:publish(channel, message)
+end
+
+-- 批量发布
+function Redis.publishMulti(messages)
+    exports.redis:publishMulti(messages)
 end
 
 -- 设置为全局变量

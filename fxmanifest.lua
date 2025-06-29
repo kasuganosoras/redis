@@ -2,7 +2,7 @@ fx_version  'cerulean'
 games       { 'gta5' }
 author      'Akkariin'
 description 'A Redis library for FiveM'
-version     '1.0.1'
+version     '1.0.2'
 server_only 'yes'
 
 server_scripts {

@@ -147,6 +147,12 @@ Redis.ready(function()
 end)
 ```
 
+### Pub/Sub Mode
+
+Pub/Sub mode allows you to subscribe to one or more channels and receive notifications when new messages are published on those channels. This is useful for building real-time chat, game event notifications, etc.
+
+Full documentation: [Pub/Sub Introduction](README_PUBSUB.md)
+
 ## Asynchronous Calls
 By default, functions like get, set, etc. provided by the Redis object are executed synchronously. You can also use Async to make asynchronous calls.
 
@@ -191,7 +197,7 @@ This project is licensed under the MIT License.
 ```text
 MIT License
 
-Copyright (c) 2025 [Your Name or Project Name]
+Copyright (c) 2025 Akkariin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
